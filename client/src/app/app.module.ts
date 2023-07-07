@@ -25,6 +25,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
+import { DateAsAgoPipe } from './pipes/date-as-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    DateAsAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,9 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    DateAsAgoPipe
+  ]
 })
 export class AppModule { }
